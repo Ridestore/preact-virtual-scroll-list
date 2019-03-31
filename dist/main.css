@@ -60,12 +60,195 @@ body {
   background-color: #c9c6c9;
 }
 
+.dtbrandheader {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  background-color: #2b1f3d;
+}
 
-/* 
-.rs-products-list-item > div {
-  border-radius: 4px;
-  overflow: hidden;
-} */
+.dtbrandheader__left {
+  color: #fff;
+  font-family: Muli;
+  padding-left: 197px;
+  padding-top: 136px;
+  max-width: 800px;
+}
+
+.dtbrandheader__header {
+  margin: 0;
+  padding: 0;
+  font-size: 27px;
+  text-transform: uppercase;
+}
+
+.dtbrandheader__description {
+  width: 70%;
+  opacity: .85;
+  font-size: 15px;
+  letter-spacing: -.07px;
+  line-height: 25px;
+  margin-top: 30px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.dtbrandheader>div {
+  width: 50%;
+  height: 100%;
+}
+
+.dtbrandheader__header {
+  margin: 0;
+  padding: 0;
+  font-size: 27px;
+  text-transform: uppercase;
+}
+
+.dtbrandheader__image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}
+
+.dtactions {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.dtactions__filterspanel {
+  display: inline-flex;
+  justify-content: flex-start;
+  max-width: calc(100% - 388px);
+  max-height: 59px;
+}
+
+.dtactions__filterspanel .dtselectbox {
+  display: inline-block;
+  position: relative;
+  max-width: 230px;
+  min-width: 170px;
+}
+
+.dtselectbox>button {
+  text-align: left;
+  position: relative;
+  outline: none;
+}
+
+.dtactions .filterblock {
+  display: inline-block;
+  width: 100%;
+  opacity: 1;
+  transition: 1s ease;
+}
+
+.dtactions__filterspanel .dtselectbox>button {
+  background: #fff;
+  border: 0;
+}
+
+.dtactions__filterspanel .dtselectbox:first-child .filterblock__label {
+  padding-left: 0;
+}
+
+.dtactions .filterblock__label {
+  color: #000;
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.07px;
+  line-height: 18px;
+  padding: 23px 64% 15px 25%;
+  white-space: nowrap;
+  transition: .15s ease;
+}
+
+.dtactions .filterblock__plus {
+  position: absolute;
+  right: 0;
+  top: 22px;
+  color: #000;
+  font-family: Muli;
+  font-size: 16px;
+}
+
+.dtselectbox__picdn, .dtselectbox__picup {
+  box-sizing: border-box;
+  height: 7.63px;
+  width: 7.63px;
+  border: 2px solid #1c1c1c;
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(315deg);
+  position: absolute;
+  right: 21px;
+}
+
+.dtactions .filterblock .dtselectbox__picdn, .dtactions .filterblock .dtselectbox__picup {
+  display: none;
+}
+
+.dtselectbox__dropdown--hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dtselectbox__dropdown {
+  position: absolute;
+  z-index: 50;
+  transition: .1s ease;
+}
+
+.dtactions__sortpanel {
+  width: 300px;
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+
+.dtactions__sortpanel .dtselectbox {
+  width: 100%;
+}
+
+.dtactions .dtsortselector {
+  height: 21px;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  font-family: Muli;
+  font-size: 14px;
+  line-height: 18px;
+  padding-left: 25px;
+  letter-spacing: -.07px;
+}
+
+.dtactions .dtsortselector__sortbytext {
+  color: #727272;
+  margin-right: 10px;
+}
+
+.dtactions .dtsortselector__sortbylabel {
+  color: #000;
+  font-weight: 700;
+}
+
+.dtactions .dtsortselector .dtselectbox__picdn {
+  top: 5px;
+}
+
+.dtbrandheader__description {
+  width: 70%;
+  opacity: .85;
+  font-size: 15px;
+  letter-spacing: -.07px;
+  line-height: 25px;
+  margin-top: 30px;
+  max-height: 220px;
+  overflow: auto;
+}
 
 .rs-products-list-item__controls {
   display: flex;
