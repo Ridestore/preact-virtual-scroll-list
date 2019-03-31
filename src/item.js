@@ -28,7 +28,7 @@ export default class Item extends preact.Component {
   }
 
   render({ item }, { src }) {
-    const { brand, shortname, productype, price, url_key, image, color } = item;
+    const { brand, shortname, productype, price, review_score, review_count, color } = item;
     const title = `${ brand } ${ shortname } ${ productype } ${ color }`;
 
     let dpr = 1;
@@ -38,12 +38,21 @@ export default class Item extends preact.Component {
       w = 550;
     }
 
+    const ratingStars = [];
+
+    for (let i = 0; i < Math.ceil(review_score); i++) {
+      ratingStars.push((
+        <path
+          fill="#000"
+          fill-opacity="1"
+          d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z"
+          transform={ `matrix(1,0,0,1,${ -350 + (11 * 2 * i) },-760)` }
+        />
+      ));
+    }
+
     return (
-      <article
-        // href={ url_key }
-        className="rs-products-list-item visible"
-        // aria-label={ title }
-      >
+      <article className="rs-products-list-item visible">
         <div className="smooth-img">
           <img
             src={ src }
@@ -68,54 +77,17 @@ export default class Item extends preact.Component {
               </g>
             </svg>
           </button>
+          { !!review_score && (
+            <div className="rs-products-list-item__rating">
+              <span>
+                <svg viewBox="0 0 13 13" width="90" height="11">
+                  { ratingStars }
+                </svg>
+              </span>
+              <span>({ review_count })</span>
+            </div>
+          ) }
         </div>
-        {/* <div className="star-rating" data-aggregate-rating="5">
-          <span>
-            <svg viewBox="0 0 13 13" width="17" height="17">
-              <clipPath id="e40f0na4o">
-                <path d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" />
-              </clipPath>
-              <path fill="#d9dfe6" fill-opacity="1" d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" data-percentage="100" />
-              <rect fill="#f7c73c" height="100%" width="100%" clip-path="url(#e40f0na4o)" />
-            </svg>
-          </span>
-          <span>
-            <svg viewBox="0 0 13 13" width="17" height="17">
-              <clipPath id="e40f0na4o">
-                <path d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" />
-              </clipPath>
-              <path fill="#d9dfe6" fill-opacity="1" d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" data-percentage="100" />
-              <rect fill="#f7c73c" height="100%" width="100%" clip-path="url(#e40f0na4o)" />
-            </svg>
-          </span>
-          <span>
-            <svg viewBox="0 0 13 13" width="17" height="17">
-              <clipPath id="e40f0na4o">
-                <path d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" />
-              </clipPath>
-              <path fill="#d9dfe6" fill-opacity="1" d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" data-percentage="100" />
-              <rect fill="#f7c73c" height="100%" width="100%" clip-path="url(#e40f0na4o)" />
-            </svg>
-          </span>
-          <span>
-            <svg viewBox="0 0 13 13" width="17" height="17">
-              <clipPath id="e40f0na4o">
-                <path d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" />
-              </clipPath>
-              <path fill="#d9dfe6" fill-opacity="1" d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" data-percentage="100" />
-              <rect fill="#f7c73c" height="100%" width="100%" clip-path="url(#e40f0na4o)" />
-            </svg>
-          </span>
-          <span>
-            <svg viewBox="0 0 13 13" width="17" height="17">
-              <clipPath id="e40f0na4o">
-                <path d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" />
-              </clipPath>
-              <path fill="#d9dfe6" fill-opacity="1" d="M313.48411,760.08l2.00345,3.98178l4.48042,0.63868l-3.24205,3.09919l0.76531,4.37656l-4.00713,-2.06621l-4.00737,2.06621l0.76532,-4.37656l-3.24206,-3.09919l4.48043,-0.63868z" transform="matrix(1,0,0,1,-307,-760)" data-percentage="100" />
-              <rect fill="#f7c73c" height="100%" width="100%" clip-path="url(#e40f0na4o)" />
-            </svg>
-          </span>
-        </div> */}
       </article>
     )
   }
