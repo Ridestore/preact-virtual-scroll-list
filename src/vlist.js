@@ -68,7 +68,10 @@ export default class RSVirtualListX extends preact.Component {
     raf(this.loopFn);
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.uniqueListKey && nextProps.uniqueListKey !== this.props.uniqueListKey) {
+      this.state.endRow = -1; // this action will force items re-rendering
+    }
     this.recalculateData();
   }
 
@@ -80,7 +83,6 @@ export default class RSVirtualListX extends preact.Component {
 
     /** calculate static flex row length */
     const grid = Array.from(this.base.children);
-    // .filter(x => !x.dataset.plug)
     const baseOffset = grid[0].offsetTop;
     const breakIndex = grid.findIndex(item => item.offsetTop > baseOffset);
     this.flexItemsPerRow = (breakIndex === -1 ? grid.length : breakIndex);
@@ -112,7 +114,6 @@ export default class RSVirtualListX extends preact.Component {
     const sliceEnd = this.props.itemsBufferLength || 6;
     this.state.itemsBuffer = this.getBufferElements(0, sliceEnd);
     this.state.endRow = -1;
-    window.rtest = this.recalculateData.bind(this);
   }
 
   componentDidMount() {
