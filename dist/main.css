@@ -278,7 +278,7 @@ body {
   margin-top: 6px;
   position: relative;
   color: #000;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
 .rs-products-list-item__title {
@@ -321,4 +321,90 @@ body {
 .smooth-img img {
   width: 100%; height: auto; position: absolute; top: 0px; left: 0px; right: 0px;
   background-color: #c9c6c9;
+}
+
+.promo-1 {
+  position: relative;
+  padding-top: calc(117.675%);
+  overflow: hidden;
+  animation: fi .4s linear;
+}
+
+.promo1-content {
+  background-color: #E8FFF7;
+  position: absolute;
+  top: 0px; left: 0px; right: 0px; bottom: 123.5px;
+  text-align: center;
+}
+
+.promo-2 {
+  position: relative;
+  padding-top: calc(117.675%);
+  overflow: hidden;
+  animation: fi .4s linear;
+}
+
+.promo2-content {
+  background-color: #000;
+  position: absolute;
+  top: 0px; left: 0px; right: 0px; bottom: 123.5px;
+  text-align: center;
+}
+
+.new-in {
+	opacity: 0.57;
+	color: #000000;
+	font-family: Muli;
+	font-size: 15px;
+	font-weight: 300;
+	letter-spacing: -0.15px;
+	line-height: 58px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 45px auto 0;
+}
+
+.promo2-content .new-in, .promo2-content .womens-jackets {
+  color: #fff;
+}
+
+.promo2-content .new-in {
+  margin: 270px auto 0;
+}
+
+.womens-jackets {
+	color: #000000;
+	font-family: "Playfair Display";
+	font-size: 28px;
+	letter-spacing: -0.15px;
+	line-height: 58px;
+	margin: 0 auto;
+}
+
+.rectangle {
+	height: 39px;
+	width: 137px;
+  background-color: #000000;
+  text-align: center;
+  margin-top: 25px;
+  outline: 0;
+  border: 0;
+}
+
+.promo2-content .rectangle {
+  background-color: #fff;
+}
+
+.view-womens {
+	color: #FFFFFF;
+	font-family: Muli;
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: -0.15px;
+	line-height: 16px;
+	text-align: center;
+}
+
+.promo2-content .view-womens {
+  color: #000;
 }

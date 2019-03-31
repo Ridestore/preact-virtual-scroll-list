@@ -8,6 +8,7 @@ export default class Item extends preact.Component {
 
   componentWillMount() {
     const { image } = this.props.item;
+    if (!image) return;
     const imgBaseLink = `/${ image }`.replace('//', '/');
     const catLink = 'https://ridestore.imgix.net/catalog/product';
     const sdQuery = '?w=60&q=50&blur=60&auto=format,compress&cs=strip';
@@ -51,14 +52,50 @@ export default class Item extends preact.Component {
       ));
     }
 
+    if (productype === 'promo-1') {
+      return (
+        <article className="rs-products-list-item visible promo-1">
+          <div className="promo1-content">
+            <div className="new-in">
+              new in
+            </div>
+            <div className="womens-jackets">
+              Women Jackets
+            </div>
+            <button aria-label="View Womens" className="rectangle">
+              <div className="view-womens">View Womens</div>
+            </button>
+          </div>
+        </article>
+      )
+    }
+
+    if (productype === 'promo-2') {
+      return (
+        <article className="rs-products-list-item visible promo-2">
+          <div className="promo2-content">
+            <div className="new-in">
+              new in
+            </div>
+            <div className="womens-jackets">
+              Black Friday
+            </div>
+            <button aria-label="View Womens" className="rectangle">
+              <div className="view-womens">View Offers</div>
+            </button>
+          </div>
+        </article>
+      )
+    }
+
     return (
       <article className="rs-products-list-item visible">
-        <div className="smooth-img">
+        { src && <div className="smooth-img">
           <img
             src={ src }
             alt={ title }
           />
-        </div>
+        </div> }
         <div className="rs-products-list-item__controls">
           <div className="rs-products-list-item__info">
             <div className="rs-products-list-item__title">
