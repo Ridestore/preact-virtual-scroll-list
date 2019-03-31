@@ -14,10 +14,10 @@ export default class Item extends preact.Component {
     this.state.src = `${ catLink }${ imgBaseLink }${ sdQuery }`;
 
     let dpr = 1;
-    let w = 500;
+    let w = 450;
     if (typeof window !== 'undefined') {
       dpr = window.devicePixelRatio;
-      w = 500;
+      w = 450;
     }
 
     const hdQuery = `?auto=format&q=60&dpr=${ dpr }&usm=15&chromasub=444&w=${ w }&fit=max`;

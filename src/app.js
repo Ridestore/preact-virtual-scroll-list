@@ -69,7 +69,7 @@ export default class App extends preact.Component {
           items={ !roll ? products : filtered } // products
           uniqueListKey={ !roll ? 1 : 2 } // force re-rendering on change
           itemRenderFn={ item => <Item key={ item.id } item={ item } /> }
-          plugRenderFn={ item => <a key={ item.id } className="rs-products-list-item" /> }
+          plugRenderFn={ item => <article key={ item.id } className="rs-products-list-item" /> }
         />
 
       </div>
