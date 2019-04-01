@@ -1,5 +1,5 @@
 import preact from 'preact';
-import RSVirtualListX from './vlist';
+import RSVirtualScrollList from './vlist';
 import Item from './item';
 
 export default class App extends preact.Component {
@@ -61,7 +61,7 @@ export default class App extends preact.Component {
           </div>
         </header>
 
-        <RSVirtualListX
+        <RSVirtualScrollList
           className="vlist" // vlist classname
           innerWidth={ window.innerWidth } // resize updates
           itemsBufferLength={ 6 } // initial items count

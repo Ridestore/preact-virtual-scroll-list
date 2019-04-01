@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import preact from 'preact';
 
 /** @type {Window} */
@@ -9,7 +10,7 @@ const raf = wnd && (wnd.requestAnimationFrame ||
   wnd.msRequestAnimationFrame ||
   wnd.oRequestAnimationFrame);
 
-export default class RSVirtualListX extends preact.Component {
+export default class RSVirtualScrollList extends preact.Component {
   constructor(props) {
     super(props);
     this.scrollHandlerFn = this.scrollHandler.bind(this);
@@ -29,7 +30,8 @@ export default class RSVirtualListX extends preact.Component {
     /** visible area - user's visible area rectangle */
     const visibleAreaTop = viewBoxScrollY >= scrollBoxTop ? 0 : scrollBoxTop - viewBoxScrollY;
     const visibleAreaHeight = viewBoxHeight - visibleAreaTop;
-    const realVisibleRows = viewBoxScrollY ? visibleRows : Math.round(visibleAreaHeight / flexRowHeight);
+    const realVisibleRows = viewBoxScrollY
+      ? visibleRows : Math.round(visibleAreaHeight / flexRowHeight);
 
     /** visible items */
     let startRow = Math.floor((viewBoxScrollY - scrollBoxTop) / flexRowHeight);
@@ -60,7 +62,8 @@ export default class RSVirtualListX extends preact.Component {
             endRow,
           };
         }
-      })
+        return null;
+      });
     }
   }
 
