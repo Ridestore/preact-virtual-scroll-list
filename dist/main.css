@@ -199,13 +199,59 @@ body {
 }
 
 .vlist {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  grid-auto-rows: 1fr;
-  grid-column-gap: 15px;
-  grid-row-gap: 5px;
   transform: translateZ(0);
+}
+
+@supports not (display: grid) {
+  /** mobile fallback */
+  @media screen and (max-width: 767px) {
+    .vlist > article {
+      width: calc(50% - 8px);
+      margin-right: 15px;
+      margin-bottom: 5px;
+    }
+
+    .vlist > article:nth-child(even) {
+      margin-right: 0;
+    }
+  }
+
+  /** desktop fallback */
+  @media screen and (min-width: 768px) {
+    .vlist > article {
+      width: calc(25% - 12px);
+      margin-right: 15px;
+      margin-bottom: 5px;
+    }
+    
+    .vlist > article:nth-child(4n) {
+      margin-right: 0;
+    } 
+  }
+}
+
+@supports (display: grid) {
+  .vlist {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 5px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .vlist {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .vlist {
+      grid-template-columns: calc(25% - 11px) calc(25% - 11px) calc(25% - 11px) calc(25% - 11px);
+    }
+  }
 }
 
 /** PRODUCT LIST ITEM **/

@@ -2,9 +2,11 @@ import preact from 'preact';
 import RSVirtualScrollList from './vlist';
 import Item from './item';
 
+const keyFunction = (rowData, isFakeRow) => `${ rowData.objectID }${ isFakeRow ? 'fake' : '' }`;
+
 export default class App extends preact.Component {
   componentDidMount() {
-    window.addEventListener('resize', () => this.forceUpdate());
+    // window.addEventListener('resize', () => this.forceUpdate());
   }
   componentDidUpdate() {
     console.log('rolll...');
@@ -62,15 +64,17 @@ export default class App extends preact.Component {
         </header>
 
         <RSVirtualScrollList
-          className="vlist" // vlist classname
           innerWidth={ window.innerWidth } // resize updates
           itemsBufferLength={ 6 } // initial items count
           rowBuffer={ 2 } // render visible rows + this to bottom and to top
           items={ !roll ? products : filtered } // products
           uniqueListKey={ !roll ? 1 : 2 } // force re-rendering on change
-          itemRenderFn={ item => <Item key={ item.id } item={ item } /> }
-          plugRenderFn={ item => <article key={ item.id } className="rs-products-list-item" /> }
-        />
+          itemRenderFn={ item => <Item key={ keyFunction(item) } item={ item } /> }
+          plugRenderFn={ item => <article key={ keyFunction(item) } className="rs-products-list-item" /> }
+          keyFunction={ keyFunction }
+        >
+          <section className="vlist" id="vlist" />
+        </RSVirtualScrollList>
 
       </div>
     )
